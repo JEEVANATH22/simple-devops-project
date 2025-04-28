@@ -1,0 +1,18 @@
+{
+    "name": "simple-devops-project",
+    "version": "1.0.0",
+    "description": "A simple DevOps project",
+    "main": "app/app.js",
+    "scripts": {
+        "start": "node app/app.js"
+    },
+    "keywords": [
+        "devops",
+        "nodejs"
+    ],
+    "author": "Jeevanath P",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^5.1.0"
+    }
+}

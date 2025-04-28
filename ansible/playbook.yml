@@ -1,0 +1,35 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update apt repo
+      apt:
+        update_cache: yes
+
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install npm
+      apt:
+        name: npm
+        state: present
+
+    - name: Clone app from GitHub
+      git:
+        repo: 'YOUR_GITHUB_REPO_LINK'
+        dest: /home/ubuntu/app
+
+    - name: Install app dependencies
+      npm:
+        path: /home/ubuntu/app
+
+    - name: Setup Nginx
+      copy:
+        src: nginx/default.conf
+        dest: /etc/nginx/sites-available/default
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
